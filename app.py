@@ -1,20 +1,12 @@
 import streamlit as st
-
-# --- Sayfa Ayarları ---
 st.set_page_config(page_title="2025 Gelir Vergisi Hesaplama", page_icon="💰", layout="centered")
-
-# --- Başlık ---
 st.markdown(
     "<h1 style='text-align:center; color:#007ACC;'>💰 2025 Gelir Vergisi Hesaplama</h1>",
     unsafe_allow_html=True
 )
 st.write("Yıllık brüt gelirini gir, gelir türünü seç; otomatik olarak vergi ve net kazanç hesaplanır. 💼")
-
-# --- Kullanıcı Girdileri ---
 gelir = st.number_input("Yıllık Brüt Gelir (TL)", min_value=0.0, step=1000.0, format="%.2f")
 gelir_turu = st.radio("Gelir Türü Seçiniz", ["Ücretli (Bordrolu)", "Ücret Dışı"], horizontal=True)
-
-# --- Hesapla Butonu ---
 if st.button("💡 Hesapla"):
     bordro = gelir_turu == "Ücretli (Bordrolu)"
 
@@ -47,8 +39,6 @@ if st.button("💡 Hesapla"):
     net = gelir - vergi
     ay_brut = gelir / 12
     ay_net = net / 12
-
-    # --- Sonuç Kartı ---
     st.markdown(
         f"""
         <div style="
@@ -68,8 +58,3 @@ if st.button("💡 Hesapla"):
         unsafe_allow_html=True
     )
 
-# --- Alt Bilgi ---
-st.markdown(
-    "<p style='text-align:center; color:gray; font-size:13px;'>Kaynak: Vergi Sirküleri 2025 — Bu araç yalnızca bilgilendirme amaçlıdır.</p>",
-    unsafe_allow_html=True
-)
