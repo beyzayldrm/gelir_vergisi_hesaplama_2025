@@ -1,0 +1,1 @@
+# gelir_vergisi_hesaplama_2025
